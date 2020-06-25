@@ -17,39 +17,51 @@
 # This variable is set first, so it can be overridden
 # by BoardConfigVendor.mk
 
--include device/samsung/smdk4412-common/BoardCommonConfig.mk
+-include device/samsung/n80xx-common/BoardConfigCommon.mk
 -include device/samsung/smdk4412-qcom-common/BoardCommonConfig.mk
 
-LOCAL_PATH := device/samsung/i9305
+LOCAL_PATH := device/samsung/n8020
 
-# Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
+# Headers
+TARGET_SPECIFIC_HEADER_PATH += device/samsung/n8020/include
 
-# Camera
-BOARD_GLOBAL_CFLAGS += -DCAMERA_WITH_CITYID_PARAM
-
-# Graphics
-TARGET_REQUIRES_SYNCHRONOUS_SETSURFACE := true
-
-# Kernel
-TARGET_KERNEL_SOURCE := kernel/samsung/smdk4412
-TARGET_KERNEL_CONFIG := lineageos_i9305_defconfig
-
-# Recovery
-TARGET_RECOVERY_FSTAB := device/samsung/i9305/rootdir/fstab.smdk4x12
-RECOVERY_FSTAB_VERSION := 2
-TARGET_RECOVERY_DENSITY := mdpi
+# Exynos4x12 Tablet
+BOARD_GLOBAL_CFLAGS += -DEXYNOS4X12_TABLET
 
 # RIL
 BOARD_PROVIDES_LIBRIL := true
 BOARD_MODEM_TYPE := mdm9x35
 
-# assert
-TARGET_OTA_ASSERT_DEVICE := m3,m3xx,i9305,GT-I9305
 
-# inherit from the proprietary version
--include vendor/samsung/i9305/BoardConfigVendor.mk
+# Bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
+
+# Kernel
+TARGET_KERNEL_SOURCE := kernel/samsung/n80xx
+TARGET_KERNEL_CONFIG := lineageos_i925_defconfig
+
+# Filesystem
+BOARD_NAND_PAGE_SIZE := 2048
+BOARD_NAND_SPARE_SIZE := 128
+BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 8388608
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1610612736
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 11811160064
+BOARD_FLASH_BLOCK_SIZE := 2048
+TARGET_USERIMAGES_USE_EXT4 := true
+
+# Recovery
+TARGET_RECOVERY_FSTAB := device/samsung/n8020/rootdir/fstab.smdk4x12
+TARGET_RECOVERY_DENSITY := mdpi
+TARGET_USERIMAGES_USE_F2FS := true
+RECOVERY_FSTAB_VERSION := 2
 
 # Selinux
 BOARD_SEPOLICY_DIRS += \
-    device/samsung/i9305/selinux
+    device/samsung/n8020/selinux
+
+# assert
+TARGET_OTA_ASSERT_DEVICE := m0,p4notelte,n8020,GT-N8020,SCH-I925,i925,p4noteltevzw
+
+# inherit from the proprietary version
+-include vendor/samsung/p4notelte/p4notelte-vendor-blobs.mk

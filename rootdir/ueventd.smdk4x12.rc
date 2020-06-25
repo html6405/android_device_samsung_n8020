@@ -2,6 +2,7 @@
 /dev/ump		0666	system	graphics
 /dev/ion		0666	system	system
 /dev/exynos-mem		0660	system	camera
+
 /dev/media0		0660	system	system
 /dev/media1		0660	system	camera
 /dev/media2		0660	system	camera
@@ -22,8 +23,10 @@
 /dev/v4l-subdev15	0660	system	system
 /dev/v4l-subdev16	0660	system	system
 /dev/v4l-subdev17	0660	system	system
+
 /dev/s3c-mfc		0666	system	graphics
 /dev/s5p-mfc		0666	system	graphics
+
 /dev/video0		0666	system	system
 /dev/video1		0666	system	camera
 /dev/video2		0666	system	system
@@ -51,6 +54,7 @@
 /dev/video41		0660	system	camera
 /dev/video42		0660	system	camera
 /dev/video43		0660	system	camera
+
 /dev/fimg2d		0666	system	graphics
 /dev/i2c-2		0660	system	system
 /dev/i2c-5		0660	system	system
@@ -61,7 +65,7 @@
 /dev/fmradio		0660	system	audio
 /dev/srp		0660	system	audio
 /dev/srp_ctrl		0660	system	audio
-/dev/umts*		0660	system	radio
+
 /dev/block/mmcblk0p7	0660	system	radio
 /dev/block/mmcblk0p7	0660	system	root
 /dev/block/mmcblk0p10	0660	system	radio
@@ -70,11 +74,18 @@
 /dev/block/mmcblk0p6	0660	system	radio
 /dev/block/mmcblk0p11	0660	system	radio
 /dev/mdm		0660	system	system
-/dev/block/mmcblk1	0660	root	system
-/dev/ttyUSB0		0660	system	system
-/dev/ttyUSB1		0660	system	radio
-/dev/ttyUSB2		0660	system	system
-/dev/hsic*		0666	system	radio
-/dev/usb/lp*		0660	system	usb
-/dev/ttyGS0		0660	system	system
-/sys/devices/virtual/input/input*	poll_delay	0660	system	radio
+
+#CPRM
+/dev/block/mmcblk1	      0660   root	    system
+/dev/ttyUSB0              0660   system     system
+/dev/ttyUSB1              0660   system     radio
+/dev/ttyUSB2              0660   system     system
+/dev/hsic*                0666   system     radio
+/dev/usb/lp*              0660   system     usb
+/dev/ttyGS0               0660   system     system
+
+/dev/ttySAC*	          0660	 root	    system
+/dev/umts*                0660   system     radio
+/dev/lte*                 0660   system     radio
+/dev/cdma*                0660   system     radio
+/dev/link_pm              0660   system     radio

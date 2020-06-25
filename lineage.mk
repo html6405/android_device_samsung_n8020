@@ -1,26 +1,31 @@
 # Release name
-PRODUCT_RELEASE_NAME := i9305
+PRODUCT_RELEASE_NAME := n8020
+
+# Inherit device configuration
+$(call inherit-product, device/samsung/n80xx-common/n80xx-common.mk)
+$(call inherit-product, device/samsung/smdk4412-qcom-common/common.mk)
+$(call inherit-product, device/samsung/n8020/n8020.mk)
+
+# Inherit from the common Open Source product configuration
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
 
-# Inherit some common CM stuff.
+# Inherit some common stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
-# Inherit device configuration
-$(call inherit-product, device/samsung/i9305/full_i9305.mk)
-
 # Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := i9305
-PRODUCT_NAME := lineage_i9305
+PRODUCT_DEVICE := n8020
+PRODUCT_NAME := lineage_n8020
 PRODUCT_BRAND := samsung
-PRODUCT_MODEL := GT-I9305
+PRODUCT_MODEL := GT-N8020
 PRODUCT_MANUFACTURER := samsung
 
 # Set build fingerprint / ID / Product Name ect.
 PRODUCT_BUILD_PROP_OVERRIDES += \
-	PRODUCT_NAME=m3xx \
-	TARGET_DEVICE=m3 \
-	BUILD_FINGERPRINT="samsung/m3xx/m3:4.4.4/KTU84P/I9305XXUFPB1:user/release-keys" \
-	PRIVATE_BUILD_DESC="m3xx-user 4.4.4 KTU84P I9305XXUFPB1 release-keys"
+	PRODUCT_NAME=p4noteltexx \
+	TARGET_DEVICE=p4notelte \
+	BUILD_FINGERPRINT="samsung/p4noteltexx/p4notelte:4.4.2/KOT49H/N8020XXSDQA4:user/release-keys" \
+	PRIVATE_BUILD_DESC="p4noteltexx-user 4.4.2 KOT49H N8020XXSDQA4 release-keys"

@@ -1,13 +1,19 @@
 #
-# system.prop for i9305
+# system.prop for n8020
 #
 
+config.disable_atlas=true
 rild.libpath=/system/lib/libsec-ril.so
+rild.libargs=-d /dev/ttyS0
+
 ro.telephony.default_network=9
 telephony.lteOnGsmDevice=1
 telephony.lteOnCdmaDevice=0
 ro.ril.telephony.mqanelements=6
 ro.hdcp2.rx=tz
-ro.sf.lcd_density=320
+
+ro.com.android.dataroaming=false
+
+ro.sf.lcd_density=160
 ro.lcd_min_brightness=20
 ro.egl.destroy_after_detach=true

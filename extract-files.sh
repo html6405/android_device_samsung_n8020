@@ -17,6 +17,6 @@
 set -e
 
 export VENDOR=samsung
-export DEVICE=i9305
+export DEVICE=n8020
 
-./../smdk4412-common/extract-files.sh $@
+./../n8020/extract-files.sh $@

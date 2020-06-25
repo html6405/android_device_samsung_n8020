@@ -106,7 +106,6 @@ struct m0_audio_device {
     int tty_mode;
     struct echo_reference_itfe *echo_reference;
     bool bluetooth_nrec;
-    int wb_amr;
     bool screen_off;
 };
 
@@ -367,6 +366,7 @@ static int set_route_by_array(struct mixer *mixer, struct route_setting *route,
 void select_devices(struct m0_audio_device *adev)
 {
     int i;
+
     if (adev->active_out_device == adev->out_device && adev->active_in_device == adev->in_device)
     return;
 
@@ -375,31 +375,27 @@ void select_devices(struct m0_audio_device *adev)
 
     /* Turn on new devices first so we don't glitch due to powerdown... */
     for (i = 0; i < adev->num_dev_cfgs; i++)
-    if (((adev->out_device & adev->dev_cfgs[i].mask) &&
-        !(adev->active_out_device & adev->dev_cfgs[i].mask)) &&
-        !(adev->dev_cfgs[i].mask & AUDIO_DEVICE_BIT_IN)) {
+    if ((adev->out_device & adev->dev_cfgs[i].mask) &&
+        !(adev->active_out_device & adev->dev_cfgs[i].mask))
         set_route_by_array(adev->mixer, adev->dev_cfgs[i].on,
                    adev->dev_cfgs[i].on_len);
-}
+
     for (i = 0; i < adev->num_dev_cfgs; i++)
-    if (((adev->in_device & adev->dev_cfgs[i].mask) &&
-        !(adev->active_in_device & adev->dev_cfgs[i].mask)) &&
-        (adev->dev_cfgs[i].mask & AUDIO_DEVICE_BIT_IN))
+    if ((adev->in_device & adev->dev_cfgs[i].mask) &&
+        !(adev->active_in_device & adev->dev_cfgs[i].mask))
         set_route_by_array(adev->mixer, adev->dev_cfgs[i].on,
                    adev->dev_cfgs[i].on_len);
 
     /* ...then disable old ones. */
     for (i = 0; i < adev->num_dev_cfgs; i++)
-    if ((!(adev->out_device & adev->dev_cfgs[i].mask) &&
-        (adev->active_out_device & adev->dev_cfgs[i].mask)) &&
-        !(adev->dev_cfgs[i].mask & AUDIO_DEVICE_BIT_IN))
+    if (!(adev->out_device & adev->dev_cfgs[i].mask) &&
+        (adev->active_out_device & adev->dev_cfgs[i].mask))
         set_route_by_array(adev->mixer, adev->dev_cfgs[i].off,
                    adev->dev_cfgs[i].off_len);
 
     for (i = 0; i < adev->num_dev_cfgs; i++)
-    if ((!(adev->in_device & adev->dev_cfgs[i].mask) &&
-        (adev->active_in_device & adev->dev_cfgs[i].mask)) &&
-        (adev->dev_cfgs[i].mask & AUDIO_DEVICE_BIT_IN))
+    if (!(adev->in_device & adev->dev_cfgs[i].mask) &&
+        (adev->active_in_device & adev->dev_cfgs[i].mask))
         set_route_by_array(adev->mixer, adev->dev_cfgs[i].off,
                    adev->dev_cfgs[i].off_len);
 
@@ -421,6 +417,7 @@ static int start_call(struct m0_audio_device *adev)
        /* use amr-wb by default */
        pcm_config_vx.rate = VX_WB_SAMPLING_RATE;
     }
+
     /* Open modem PCM channels */
     if (adev->pcm_modem_dl == NULL) {
         ALOGD("Opening PCM modem DL stream");
@@ -533,24 +530,19 @@ static void set_incall_device(struct m0_audio_device *adev)
     uint32_t mDevSettingsFlag = TTY_OFF;
 
     switch(adev->out_device) {
-        case AUDIO_DEVICE_OUT_EARPIECE:
-            rx_dev_id = DEVICE_HANDSET_RX_ACDB_ID;
-            tx_dev_id = DEVICE_HANDSET_TX_ACDB_ID;
-            voice_index = 5;
-            break;
         case AUDIO_DEVICE_OUT_SPEAKER:
         case AUDIO_DEVICE_OUT_ANLG_DOCK_HEADSET:
         case AUDIO_DEVICE_OUT_DGTL_DOCK_HEADSET:
         case AUDIO_DEVICE_OUT_AUX_DIGITAL:
-            rx_dev_id = DEVICE_SPEAKER_MONO_RX_ACDB_ID;
+            rx_dev_id = DEVICE_SPEAKER_RX_ACDB_ID;
             tx_dev_id = DEVICE_SPEAKER_TX_ACDB_ID;
-            voice_index = 9;
+	    voice_index = 7;
             break;
         case AUDIO_DEVICE_OUT_WIRED_HEADSET:
         case AUDIO_DEVICE_OUT_WIRED_HEADPHONE:
             rx_dev_id = DEVICE_HEADSET_RX_ACDB_ID;
             tx_dev_id = DEVICE_HEADSET_TX_ACDB_ID;
-            voice_index = 5;
+	    voice_index = 5;
             break;
         case AUDIO_DEVICE_OUT_BLUETOOTH_SCO:
         case AUDIO_DEVICE_OUT_BLUETOOTH_SCO_HEADSET:
@@ -565,9 +557,9 @@ static void set_incall_device(struct m0_audio_device *adev)
             voice_index = 7;
             break;
         default:
-            rx_dev_id = DEVICE_HANDSET_RX_ACDB_ID;
-            tx_dev_id = DEVICE_HANDSET_TX_ACDB_ID;
-            voice_index = 5;
+            rx_dev_id = DEVICE_SPEAKER_RX_ACDB_ID;
+            tx_dev_id = DEVICE_SPEAKER_TX_ACDB_ID;
+	    voice_index = 5;
             break;
     }
 
@@ -648,9 +640,9 @@ static void select_mode(struct m0_audio_device *adev)
         ALOGE("Entering IN_CALL state, in_call=%d", adev->in_call);
         if (!adev->in_call) {
             force_all_standby(adev);
-            /* force earpiece route for in call state if speaker is the
+            /* force speaker route for in call state if speaker is the
             only currently selected route. This prevents having to tear
-            down the modem PCMs to change route from speaker to earpiece
+            down the modem PCMs to change route from speaker to speaker
             after the ringtone is played, but doesn't cause a route
             change if a headset or bt device is already connected. If
             speaker is not the only thing active, just remove it from
@@ -659,7 +651,7 @@ static void select_mode(struct m0_audio_device *adev)
             manager will update the output device after the audio mode
             change, even if the device selection did not change. */
             if (adev->out_device == AUDIO_DEVICE_OUT_SPEAKER) {
-                adev->out_device = AUDIO_DEVICE_OUT_EARPIECE;
+                //adev->out_device = AUDIO_DEVICE_OUT_EARPIECE;
                 adev->in_device = AUDIO_DEVICE_IN_BUILTIN_MIC & ~AUDIO_DEVICE_BIT_IN;
             } else
                 adev->out_device &= ~AUDIO_DEVICE_OUT_SPEAKER;
@@ -684,7 +676,7 @@ static void select_mode(struct m0_audio_device *adev)
                     ALOGE("%s: csd_stop_voice error %d\n", __func__, err);
                 }
             }
-            adev->in_device = AUDIO_DEVICE_NONE;
+
             force_all_standby(adev);
             select_output_device(adev);
             select_input_device(adev);
@@ -705,7 +697,6 @@ static void select_output_device(struct m0_audio_device *adev)
     headset_on = adev->out_device & AUDIO_DEVICE_OUT_WIRED_HEADSET;
     headphone_on = adev->out_device & AUDIO_DEVICE_OUT_WIRED_HEADPHONE;
     speaker_on = adev->out_device & AUDIO_DEVICE_OUT_SPEAKER;
-    earpiece_on = adev->out_device & AUDIO_DEVICE_OUT_EARPIECE;
     bt_on = adev->out_device & AUDIO_DEVICE_OUT_ALL_SCO;
 
     switch(adev->out_device) {
@@ -717,9 +708,6 @@ static void select_output_device(struct m0_audio_device *adev)
             break;
         case AUDIO_DEVICE_OUT_WIRED_HEADPHONE:
             ALOGD("%s: AUDIO_DEVICE_OUT_WIRED_HEADPHONE", __func__);
-            break;
-        case AUDIO_DEVICE_OUT_EARPIECE:
-            ALOGD("%s: AUDIO_DEVICE_OUT_EARPIECE", __func__);
             break;
         case AUDIO_DEVICE_OUT_ANLG_DOCK_HEADSET:
             ALOGD("%s: AUDIO_DEVICE_OUT_ANLG_DOCK_HEADSET", __func__);
@@ -815,11 +803,6 @@ static void select_input_device(struct m0_audio_device *adev)
         case AUDIO_DEVICE_IN_BUILTIN_MIC:
             ALOGD("%s: AUDIO_DEVICE_IN_BUILTIN_MIC", __func__);
             break;
-        case AUDIO_DEVICE_IN_BACK_MIC:
-            // Force use both mics for video recording
-            adev->in_device = (AUDIO_DEVICE_IN_BACK_MIC | AUDIO_DEVICE_IN_BUILTIN_MIC) & ~AUDIO_DEVICE_BIT_IN;
-            ALOGD("%s: AUDIO_DEVICE_IN_BACK_MIC and AUDIO_DEVICE_IN_BUILTIN_MIC", __func__);
-            break;
         case AUDIO_DEVICE_IN_BLUETOOTH_SCO_HEADSET:
             ALOGD("%s: AUDIO_DEVICE_IN_BLUETOOTH_SCO_HEADSET", __func__);
             break;
@@ -878,7 +861,7 @@ static int start_output_stream_low_latency(struct m0_stream_out *out)
     if (success) {
         out->buffer_frames = pcm_config_tones.period_size * 2;
         if (out->buffer == NULL)
-            out->buffer = malloc(out->buffer_frames * audio_stream_out_frame_size(&out->stream.common));
+            out->buffer = malloc(out->buffer_frames * audio_stream_frame_size(&out->stream.common));
 
         if (adev->echo_reference != NULL)
             out->echo_reference = adev->echo_reference;
@@ -1078,7 +1061,7 @@ static size_t out_get_buffer_size_low_latency(const struct audio_stream *stream)
     from pcm_config_tones.rate. */
     size_t size = (SHORT_PERIOD_SIZE * DEFAULT_OUT_SAMPLING_RATE) / pcm_config_tones.rate;
     size = ((size + 15) / 16) * 16;
-    return size * audio_stream_out_frame_size((struct audio_stream *)stream);
+    return size * audio_stream_frame_size((struct audio_stream *)stream);
 }
 
 static size_t out_get_buffer_size_deep_buffer(const struct audio_stream *stream)
@@ -1092,7 +1075,7 @@ static size_t out_get_buffer_size_deep_buffer(const struct audio_stream *stream)
     size_t size = (DEEP_BUFFER_SHORT_PERIOD_SIZE * DEFAULT_OUT_SAMPLING_RATE) /
                         pcm_config_mm.rate;
     size = ((size + 15) / 16) * 16;
-    return size * audio_stream_out_frame_size((struct audio_stream *)stream);
+    return size * audio_stream_frame_size((struct audio_stream *)stream);
 }
 
 static audio_channel_mask_t out_get_channels(const struct audio_stream *stream)
@@ -1316,7 +1299,7 @@ static ssize_t out_write_low_latency(struct audio_stream_out *stream, const void
     int ret;
     struct m0_stream_out *out = (struct m0_stream_out *)stream;
     struct m0_audio_device *adev = out->dev;
-    size_t frame_size = audio_stream_out_frame_size(&out->stream.common);
+    size_t frame_size = audio_stream_frame_size(&out->stream.common);
     size_t in_frames = bytes / frame_size;
     size_t out_frames = in_frames;
     bool force_input_standby = false;
@@ -1384,7 +1367,7 @@ exit:
     pthread_mutex_unlock(&out->lock);
 
     if (ret != 0) {
-        usleep(bytes * 1000000 / audio_stream_out_frame_size(&stream->common) /
+        usleep(bytes * 1000000 / audio_stream_frame_size(&stream->common) /
                out_get_sample_rate(&stream->common));
     }
 
@@ -1408,7 +1391,7 @@ static ssize_t out_write_deep_buffer(struct audio_stream_out *stream, const void
     int ret;
     struct m0_stream_out *out = (struct m0_stream_out *)stream;
     struct m0_audio_device *adev = out->dev;
-    size_t frame_size = audio_stream_out_frame_size(&out->stream.common);
+    size_t frame_size = audio_stream_frame_size(&out->stream.common);
     size_t in_frames = bytes / frame_size;
     size_t out_frames;
     bool use_long_periods;
@@ -1487,7 +1470,7 @@ exit:
     pthread_mutex_unlock(&out->lock);
 
     if (ret != 0) {
-        usleep(bytes * 1000000 / audio_stream_out_frame_size(&stream->common) /
+        usleep(bytes * 1000000 / audio_stream_frame_size(&stream->common) /
                out_get_sample_rate(&stream->common));
     }
 
@@ -2099,7 +2082,7 @@ static ssize_t in_read(struct audio_stream_in *stream, void* buffer,
     int ret = 0;
     struct m0_stream_in *in = (struct m0_stream_in *)stream;
     struct m0_audio_device *adev = in->dev;
-    size_t frames_rq = bytes / audio_stream_in_frame_size(&stream->common);
+    size_t frames_rq = bytes / audio_stream_frame_size(&stream->common);
 
     /* acquiring hw device mutex systematically is useful if a low priority thread is waiting
      * on the input stream mutex - e.g. executing select_mode() while holding the hw device
@@ -2132,7 +2115,7 @@ static ssize_t in_read(struct audio_stream_in *stream, void* buffer,
 
 exit:
     if (ret < 0)
-        usleep(bytes * 1000000 / audio_stream_in_frame_size(&stream->common) /
+        usleep(bytes * 1000000 / audio_stream_frame_size(&stream->common) /
                in_get_sample_rate(&stream->common));
 
     pthread_mutex_unlock(&in->lock);
@@ -2948,14 +2931,11 @@ static const struct {
 } dev_names[] = {
     { AUDIO_DEVICE_OUT_SPEAKER, "speaker" },
     { AUDIO_DEVICE_OUT_WIRED_HEADSET | AUDIO_DEVICE_OUT_WIRED_HEADPHONE, "headphone" },
-    { AUDIO_DEVICE_OUT_EARPIECE, "earpiece" },
-    { AUDIO_DEVICE_OUT_ANLG_DOCK_HEADSET, "analogue-dock" },
+    { AUDIO_DEVICE_OUT_ANLG_DOCK_HEADSET, "analog-dock" },
     { AUDIO_DEVICE_OUT_DGTL_DOCK_HEADSET, "digital-dock" },
     { AUDIO_DEVICE_OUT_ALL_SCO, "sco-out" },
     { AUDIO_DEVICE_OUT_AUX_DIGITAL, "aux-digital" },
-
-    { AUDIO_DEVICE_IN_BUILTIN_MIC, "builtin-mic" },
-    { AUDIO_DEVICE_IN_BACK_MIC, "back-mic" },
+    { AUDIO_DEVICE_IN_BUILTIN_MIC | AUDIO_DEVICE_IN_BACK_MIC, "builtin-mic" },
     { AUDIO_DEVICE_IN_WIRED_HEADSET, "headset-in" },
     { AUDIO_DEVICE_IN_ALL_SCO, "sco-in" },
 };
@@ -3103,19 +3083,15 @@ static int adev_config_parse(struct m0_audio_device *adev)
     struct config_parse_state s;
     FILE *f;
     XML_Parser p;
-    char property[PROPERTY_VALUE_MAX];
-    char file[80];
     int ret = 0;
     bool eof = false;
     int len;
+    char buf[1024];
 
-    property_get("ro.product.device", property, "tiny_hw");
-    snprintf(file, sizeof(file), "/system/etc/sound/%s", property);
-
-    ALOGV("Reading configuration from %s\n", file);
-    f = fopen(file, "r");
+    ALOGV("Reading configuration from %s\n", CONFIG_FILE);
+    f = fopen(CONFIG_FILE, "r");
     if (!f) {
-    ALOGE("Failed to open %s\n", file);
+    ALOGE("Failed to open %s\n", CONFIG_FILE);
     return -ENODEV;
     }
 
@@ -3133,7 +3109,7 @@ static int adev_config_parse(struct m0_audio_device *adev)
     XML_SetElementHandler(p, adev_config_start, adev_config_end);
 
     while (!eof) {
-    len = fread(file, 1, sizeof(file), f);
+    len = fread(buf, 1, sizeof(buf), f);
     if (ferror(f)) {
         ALOGE("I/O error reading config\n");
         ret = -EIO;
@@ -3141,7 +3117,7 @@ static int adev_config_parse(struct m0_audio_device *adev)
     }
     eof = feof(f);
 
-    if (XML_Parse(p, file, len, eof) == XML_STATUS_ERROR) {
+    if (XML_Parse(p, buf, len, eof) == XML_STATUS_ERROR) {
         ALOGE("Parse error at line %u:\n%s\n",
          (unsigned int)XML_GetCurrentLineNumber(p),
          XML_ErrorString(XML_GetErrorCode(p)));
@@ -3220,7 +3196,6 @@ static int adev_open(const hw_module_t* module, const char* name,
     adev->voice_volume = 1.0f;
     adev->tty_mode = TTY_MODE_OFF;
     adev->bluetooth_nrec = true;
-    adev->wb_amr = 0;
 
     /* QCOM CSD-Client */
     mCsdHandle = dlopen(CSD_CLIENT_LIBPATH, RTLD_NOW);
@@ -3260,7 +3235,7 @@ struct audio_module HAL_MODULE_INFO_SYM = {
         .module_api_version = AUDIO_MODULE_API_VERSION_0_1,
         .hal_api_version = HARDWARE_HAL_API_VERSION,
         .id = AUDIO_HARDWARE_MODULE_ID,
-        .name = "M3 audio HW HAL",
+        .name = "P4NOTELTE audio HW HAL",
         .author = "The CyanogenMod Project",
         .methods = &hal_module_methods,
     },
