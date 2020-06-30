@@ -1,1 +1,1 @@
-add_lunch_combo lineage_n8020-userdebug
+add_lunch_combo slim_n8020-userdebug

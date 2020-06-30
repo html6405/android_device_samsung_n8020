@@ -14,11 +14,11 @@ TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
 
 # Inherit some common stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+$(call inherit-product, vendor/slim/config/common_full_phone.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := n8020
-PRODUCT_NAME := lineage_n8020
+PRODUCT_NAME := slim_n8020
 PRODUCT_BRAND := samsung
 PRODUCT_MODEL := GT-N8020
 PRODUCT_MANUFACTURER := samsung
