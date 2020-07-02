@@ -1,5 +1,0 @@
-# Drivers read firmware files /firmware/image
-## More Firmwares
-allow ueventd { firmware_mfc }:file r_file_perms;
-allow ueventd { firmware_camera }:dir search;
-allow ueventd firmware_camera:file { read open getattr };
