@@ -230,3 +230,4 @@ service qmuxd /system/bin/qmuxd
 service sec_keyboard /system/bin/sec_keyboard /dev/ttySAC3
 	class core
 	group system
+	seclabel u:r:sec_keyboard:s0
