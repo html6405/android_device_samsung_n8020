@@ -1,3 +1,5 @@
+# Dock
+/dev/ttySAC3                             u:object_r:dock_device:s0
 
 # RIL
 /dev/mdm                                u:object_r:radio_device:s0
