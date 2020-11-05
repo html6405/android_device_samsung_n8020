@@ -1,0 +1,20 @@
+allow glgps system_data_file:file { lock open };
+#allow hal_power_default default_android_hwservice:hwservice_manager add;
+#allow macloader vendor_file:file entrypoint;
+allow radioreset self:capability sys_nice;
+allow radioreset settings_service:service_manager find;
+allow radioreset system_file:file execute_no_trans;
+#allow storaged self:capability sys_nice;
+
+#============= installd ==============
+allow installd system_data_file:dir search;
+
+#============= perfprofd ==============
+allow perfprofd system_data_file:dir search;
+
+#============= rild ==============
+allow rild system_data_file:dir search;
+
+#============= tinyplay ==============
+allow tinyplay audio_device:dir search;
+

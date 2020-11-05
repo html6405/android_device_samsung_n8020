@@ -20,10 +20,12 @@
 -include device/samsung/n80xx-common/BoardConfigCommon.mk
 -include device/samsung/smdk4412-qcom-common/BoardCommonConfig.mk
 
+# ENABLE_VENDOR_RIL_SERVICE = true
+
 LOCAL_PATH := device/samsung/n8020
 
 # Headers
-TARGET_SPECIFIC_HEADER_PATH += device/samsung/n8020/include
+# TARGET_SPECIFIC_HEADER_PATH += device/samsung/n8020/include
 
 # Exynos4x12 Tablet
 BOARD_GLOBAL_CFLAGS += -DEXYNOS4X12_TABLET
@@ -32,16 +34,25 @@ BOARD_GLOBAL_CFLAGS += -DEXYNOS4X12_TABLET
 BOARD_PROVIDES_LIBRIL := true
 BOARD_MODEM_TYPE := mdm9x35
 
+TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
+    /system/vendor/bin/smdexe=19
+
+TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
+    /system/vendor/bin/qcks=19
+
+TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
+    /system/vendor/bin/qmiproxy=19
+
+TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
+    /system/vendor/bin/qmuxd=19
+
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 
 # Kernel
-TARGET_KERNEL_SOURCE := kernel/samsung/n80xx
 TARGET_KERNEL_CONFIG := lineageos_i925_defconfig
 
 # Filesystem
-BOARD_NAND_PAGE_SIZE := 2048
-BOARD_NAND_SPARE_SIZE := 128
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 8388608
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1610612736

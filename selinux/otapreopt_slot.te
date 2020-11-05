@@ -1,0 +1,2 @@
+allow otapreopt_slot sysfs_cpuinfo:dir search;
+allow otapreopt_slot sysfs_cpuinfo:file { getattr open read };

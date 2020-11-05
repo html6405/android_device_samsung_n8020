@@ -1,0 +1,58 @@
+	
+#============= cameraserver ==============
+allow cameraserver firmware_exynos:dir search;
+allow cameraserver firmware_exynos:file { open read };
+allow cameraserver mnt_user_file:lnk_file { open read };
+allow cameraserver media_rw_data_file:dir search;
+allow cameraserver sdcardfs:dir search;
+
+
+#============= init ==============
+allow init radioreset:process noatsecure;
+
+#============= installd ==============
+allow installd dex2oat:process noatsecure;
+
+#============= radioreset ==============
+allow radioreset shell_exec:file entrypoint;
+
+#============= rild ==============
+allow rild anr_data_file:dir search;
+allow rild anr_data_file:file { open read };
+
+#============= servicemanager ==============
+allow servicemanager rild:dir search;
+allow servicemanager rild:process getattr;
+allow servicemanager rild:file { open read };
+allow servicemanager sysfs_cpuinfo:dir search;
+allow servicemanager sysfs_cpuinfo:file { getattr open read };
+
+#============= ueventd ==============
+allow ueventd firmware_exynos:dir search;
+allow ueventd firmware_exynos:file { open read };
+allow ueventd firmware_exynos:file getattr;
+
+
+
+#============= glgps ==============
+allow glgps glgps_exec:file execute_no_trans;
+
+#============= hal_light_default ==============
+allow hal_light_default sysfs:file read;
+
+#============= hwservicemanager ==============
+allow hwservicemanager init:file { open read };
+allow hwservicemanager init:process getattr;
+
+#============= nfc ==============
+allow nfc firmware_exynos:dir search;
+
+#============= zygote ==============
+allow zygote sysfs_cpuinfo:dir { open read search };
+allow zygote sysfs_cpuinfo:file { getattr open read };
+
+#============= hal_light_default ==============
+allow hal_light_default sysfs_cpuinfo:dir search;
+allow hal_light_default sysfs_cpuinfo:file { getattr open read };
+
+

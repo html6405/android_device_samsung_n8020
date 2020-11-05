@@ -1,4 +1,13 @@
 # sec_keyboard
+type sec_keyboard, domain;
+type sec_keyboard_exec, exec_type, file_type;
+
+init_daemon_domain(sec_keyboard)
+
+allow sec_keyboard self:capability { sys_admin };
+allow sec_keyboard input_device:file { read entrypoint getattr};
+allow sec_keyboard dock_device:chr_file { open read write ioctl };
+allow sec_keyboard vendor_file:file { entrypoint };
 
 type ttySAC3, domain;
 type ttySAC3_exec, exec_type, file_type;

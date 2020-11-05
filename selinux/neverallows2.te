@@ -1,0 +1,38 @@
+
+
+#============= dex2oat ==============
+allow dex2oat sysfs_cpuinfo:dir { open read search };
+allow dex2oat sysfs_cpuinfo:file { getattr open read };
+
+#============= glgps ==============
+allow glgps devpts:chr_file { read write };
+#allow glgps glgps_exec:file execmod;
+allow glgps self:capability dac_override;
+
+#============= hal_light_default ==============
+allow hal_light_default sysfs:file { open write };
+
+#============= init ==============
+allow init app_data_file:dir { add_name getattr setattr write };
+allow init app_data_file:file { getattr open read setattr write };
+allow init mnt_user_file:lnk_file read;
+allow init sdcardfs:dir { add_name search };
+allow init sdcardfs:file { create open write };
+allow init storage_file:lnk_file read;
+
+#============= logpersist ==============
+allow logpersist devpts:chr_file { read write };
+allow logpersist media_rw_data_file:file write;
+allow logpersist sdcardfs:file write;
+allow logpersist sysfs_cpuinfo:dir search;
+allow logpersist sysfs_cpuinfo:file { getattr open read };
+
+#============= system_server ==============
+allow system_server init:unix_stream_socket getopt;
+
+#============= untrusted_app ==============
+allow untrusted_app sysfs_cpuinfo:dir { open read search };
+allow untrusted_app sysfs_cpuinfo:file { open read };
+
+#============= zygote ==============
+allow zygote init:unix_stream_socket { getattr read write };

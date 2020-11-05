@@ -1,0 +1,4 @@
+allow hwservicemanager init:dir search;
+allow hwservicemanager sysfs_cpuinfo:dir search;
+allow hwservicemanager sysfs_cpuinfo:file { getattr open read };
+allow hwservicemanager init:binder { call };

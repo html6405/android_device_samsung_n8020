@@ -1,0 +1,3 @@
+allow bootanim sysfs_cpuinfo:dir search;
+allow bootanim sysfs_cpuinfo:file { getattr open read };
+#allow bootanim unlabeled:file { execute getattr open read };

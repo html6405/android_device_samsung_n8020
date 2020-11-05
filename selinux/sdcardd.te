@@ -1,0 +1,3 @@
+allow sdcardd sysfs_cpuinfo:dir search;
+allow sdcardd sysfs_cpuinfo:file { getattr open read };
+allow sdcardd self:capability { chown fowner fsetid };

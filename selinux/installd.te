@@ -1,0 +1,3 @@
+allow installd sysfs_cpuinfo:dir search;
+allow installd sysfs_cpuinfo:file { getattr open read };
+allow installd self:capability sys_nice;

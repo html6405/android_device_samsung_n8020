@@ -28,7 +28,7 @@
 #include <stdlib.h>
 #include <expat.h>
 #include <dlfcn.h>
-
+#include <android/api-level.h>
 #include <cutils/log.h>
 #include <cutils/str_parms.h>
 #include <cutils/properties.h>
@@ -44,6 +44,8 @@
 #include <audio_effects/effect_aec.h>
 
 #include "audio_hw.h"
+
+extern void android_set_application_target_sdk_version(uint32_t target);
 
 struct pcm_config pcm_config_mm = {
     .channels = 2,
@@ -3139,6 +3141,8 @@ static int adev_open(const hw_module_t* module, const char* name,
 {
     struct m0_audio_device *adev;
     int ret;
+
+    android_set_application_target_sdk_version(__ANDROID_API_L_MR1__);
 
     if (strcmp(name, AUDIO_HARDWARE_INTERFACE) != 0)
         return -EINVAL;

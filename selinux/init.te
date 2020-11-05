@@ -1,4 +1,26 @@
-allow init block_device:lnk_file { setattr };
-allow init system_file:file { execute_no_trans };
-allow init system_file:dir { relabelfrom };
-allow init socket_device:sock_file { create };
+allow init self:capability sys_module;
+allow init tmpfs:lnk_file create;
+allow init rild:process noatsecure;
+allow init debugfs:dir mounton;
+allow init sysfs_bluetooth_writable:file setattr;
+allow init sysfs_display:file { open setattr write };
+allow init sysfs_radio:file setattr;
+#allow init system_file:file execute_no_trans;
+allow init proc:file { open write };
+allow init sysfs:file { open read setattr write };
+allow init sysfs_batteryinfo:file setattr;
+allow init sysfs_cpuinfo:file { setattr open read };
+allow init su_exec:file { execute getattr open read };
+allow init sysfs_lmkd:file setattr;
+allow init sudaemon:process { noatsecure rlimitinh siginh transition };
+#allow init settings_service:service_manager find;
+allow init sysfs_cpufreq:file setattr;
+allow init self:capability sys_nice;
+allow init sysfs:lnk_file setattr;
+allow init audio_device:chr_file { ioctl write };
+allow init vendor_file:file execute_no_trans;
+allow init socket_device:sock_file { unlink };
+allow init hwservicemanager:binder { transfer call };
+allow init system_data_file:file { lock };
+
+domain_auto_trans(init, rootfs, macloader, tinyplay)

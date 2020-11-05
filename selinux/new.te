@@ -1,0 +1,20 @@
+#============= init ==============
+allow init kernel:security read_policy;
+allow init sdcardfs:dir write;
+#allow init self:capability sys_ptrace;
+#allow init shell_exec:file execute_no_trans;
+allow init socket_device:sock_file { create setattr };
+#allow init system_file:file execute_no_trans;
+
+#============= servicemanager ==============
+allow servicemanager radioreset:dir search;
+allow servicemanager radioreset:file { open read };
+allow servicemanager radioreset:process getattr;
+
+#============= system_server ==============
+allow system_server radioreset:fd use;
+allow system_server radioreset:fifo_file write;
+
+#============= toolbox ==============
+allow toolbox init:fifo_file { ioctl read };
+allow toolbox init:unix_stream_socket { read write };
