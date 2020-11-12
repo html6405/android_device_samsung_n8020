@@ -2,8 +2,10 @@
 # system.prop for n8020
 #
 
-config.disable_atlas=true
+dalvik.vm.dexopt-data-only=1
+dalvik.vm.dex2oat-Xmx=256m
 rild.libpath=/system/lib/libsecril-shim.so
+rild.libargs=-d /dev/ttyS0
 ro.telephony.default_network=9
 telephony.lteOnGsmDevice=1
 telephony.lteOnCdmaDevice=0
@@ -14,7 +16,6 @@ ro.com.android.dataroaming=false
 
 ro.sf.lcd_density=160
 ro.lcd_min_brightness=20
-ro.egl.destroy_after_detach=true
 
 # EGL blobs crash on screen off
 ro.egl.destroy_after_detach=true
@@ -47,9 +48,6 @@ persist.sys.purgeable_assets=1
 
 # Better RAM management
 ro.HOME_APP_ADJ=1
-
-# Low memory device
-ro.config.low_ram=true
 
 # Force high-end graphics in low ram mode
 persist.sys.force_highendgfx=true

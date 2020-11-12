@@ -20,31 +20,11 @@
 -include device/samsung/n80xx-common/BoardConfigCommon.mk
 -include device/samsung/smdk4412-qcom-common/BoardCommonConfig.mk
 
-# ENABLE_VENDOR_RIL_SERVICE = true
-
 LOCAL_PATH := device/samsung/n8020
-
-# Headers
-# TARGET_SPECIFIC_HEADER_PATH += device/samsung/n8020/include
-
-# Exynos4x12 Tablet
-BOARD_GLOBAL_CFLAGS += -DEXYNOS4X12_TABLET
 
 # RIL
 BOARD_PROVIDES_LIBRIL := true
 BOARD_MODEM_TYPE := mdm9x35
-
-TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
-    /system/vendor/bin/smdexe=19
-
-TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
-    /system/vendor/bin/qcks=19
-
-TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
-    /system/vendor/bin/qmiproxy=19
-
-TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
-    /system/vendor/bin/qmuxd=19
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
@@ -72,6 +52,3 @@ BOARD_SEPOLICY_DIRS += \
 
 # assert
 TARGET_OTA_ASSERT_DEVICE := m0,p4notelte,n8020,GT-N8020,SCH-I925,i925,p4noteltevzw
-
-# inherit from the proprietary version
--include vendor/samsung/p4notelte/p4notelte-vendor-blobs.mk

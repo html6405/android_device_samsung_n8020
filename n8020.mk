@@ -30,8 +30,17 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.call_ring.multiple=false \
     ro.telephony.call_ring.delay=3000
 
+# RIL
+PRODUCT_PACKAGES += \
+    libsecril-client \
+    libsecril-client-sap
 
-$(call inherit-product, vendor/samsung/p4notelte/p4notelte-vendor.mk)
+PRODUCT_PROPERTY_OVERRIDES += \
+    mobiledata.interfaces=pdp0,gprs,ppp0,rmnet0,rmnet1
+
+
+# Include device blobs first
+$(call inherit-product, vendor/samsung/p4notelte/p4notelte-vendor-blobs.mk)
 
 # Vendor properties
 -include $(LOCAL_PATH)/vendor_prop.mk
