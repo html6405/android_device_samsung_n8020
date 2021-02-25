@@ -207,6 +207,8 @@ service qc_kickstart /system/bin/qcks s
     class core
     user root
     group radio cache inet misc audio sdcard_rw log
+    oneshot
+    seclabel u:r:kickstart:s0
 
 service qmuxd /system/bin/qmuxd
     class main
