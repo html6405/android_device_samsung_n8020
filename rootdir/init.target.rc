@@ -212,12 +212,9 @@ service qc_kickstart /system/bin/qcks s
 
 service qmuxd /system/bin/qmuxd
     class main
-    user root
+    user system
     group radio log audio bluetooth gps log
-
-# serial keyboard port
-	chown root system /dev/ttySAC3
-	chmod 0660 /dev/ttySAC3
+    seclabel u:r:qmuxd:s0
 
 # serial keyboard daemon
 service sec_keyboard /system/vendor/bin/sec_keyboard /dev/ttySAC3
