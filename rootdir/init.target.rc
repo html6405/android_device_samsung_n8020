@@ -180,6 +180,10 @@ on property:init.svc.macloader=stopped
     chown system root /data/.rev
     chmod 0666 /data/.rev
 
+# serial keyboard port
+	chown root system /dev/ttySAC3
+	chmod 0660 /dev/ttySAC3
+
 #########################################################################################################################
 on fs
 #########################################################################################################################
