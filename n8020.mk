@@ -30,6 +30,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.call_ring.multiple=false \
     ro.telephony.call_ring.delay=3000
 
+# HIDL
+DEVICE_MANIFEST_FILE := $(LOCAL_PATH)/manifest.xml
 
 $(call inherit-product, vendor/samsung/p4notelte/p4notelte-vendor.mk)
 
