@@ -20,8 +20,6 @@
 -include device/samsung/n80xx-common/BoardConfigCommon.mk
 -include device/samsung/smdk4412-qcom-common/BoardCommonConfig.mk
 
-# ENABLE_VENDOR_RIL_SERVICE = true
-
 LOCAL_PATH := device/samsung/n8020
 
 N8020 := true
