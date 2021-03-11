@@ -24,11 +24,7 @@
 
 LOCAL_PATH := device/samsung/n8020
 
-# Headers
-# TARGET_SPECIFIC_HEADER_PATH += device/samsung/n8020/include
-
-# Exynos4x12 Tablet
-BOARD_GLOBAL_CFLAGS += -DEXYNOS4X12_TABLET
+N8020 := true
 
 # RIL
 BOARD_PROVIDES_LIBRIL := true
@@ -45,9 +41,6 @@ TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
 
 TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
     /system/vendor/bin/qmuxd=19
-
-# Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 
 # Kernel
 TARGET_KERNEL_CONFIG := lineageos_i925_defconfig
