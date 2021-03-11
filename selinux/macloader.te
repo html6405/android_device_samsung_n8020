@@ -9,7 +9,5 @@ allow macloader self:capability { dac_override dac_read_search };
 allow macloader rootfs:lnk_file getattr;
 allow macloader self:capability { chown fowner fsetid };
 allow macloader sysfs:file { open write };
-allow macloader sysfs_cpuinfo:dir search;
-allow macloader sysfs_cpuinfo:file { getattr open read };
 #allow macloader vendor_file:file entrypoint;
 

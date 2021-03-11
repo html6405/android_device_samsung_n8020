@@ -1,2 +1,0 @@
-allow sgdisk sysfs_cpuinfo:dir search;
-allow sgdisk sysfs_cpuinfo:file { getattr open read };

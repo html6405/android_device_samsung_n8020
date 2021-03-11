@@ -1,2 +1,0 @@
-allow incidentd sysfs_cpuinfo:dir search;
-allow incidentd sysfs_cpuinfo:file { getattr open read };
