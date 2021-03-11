@@ -40,7 +40,3 @@ $(call inherit-product, vendor/samsung/p4notelte/p4notelte-vendor.mk)
 
 # Vendor properties
 -include $(LOCAL_PATH)/vendor_prop.mk
-
-# Include common makefile
-$(call inherit-product, device/samsung/n80xx-common/n80xx-common.mk)
-$(call inherit-product, device/samsung/smdk4412-qcom-common/common.mk)
