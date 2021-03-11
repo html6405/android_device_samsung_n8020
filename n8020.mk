@@ -36,7 +36,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # HIDL
 DEVICE_MANIFEST_FILE := $(LOCAL_PATH)/manifest.xml
 
-$(call inherit-product, vendor/samsung/p4notelte/p4notelte-vendor.mk)
+# Include device blobs first
+$(call inherit-product, vendor/samsung/n8020/n8020-vendor.mk)
 
 # Vendor properties
 -include $(LOCAL_PATH)/vendor_prop.mk
