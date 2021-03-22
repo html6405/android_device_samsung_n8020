@@ -1,2 +1,0 @@
-#allow radio method_trace_data_file:file { read unlink };
-#allow radio method_trace_data_file:file { execute read unlink };

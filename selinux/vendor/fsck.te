@@ -1,0 +1,5 @@
+allow fsck efs_block_device:blk_file { read write getattr open ioctl };
+allow fsck sysfs_cpuinfo:dir search;
+allow fsck sysfs_cpuinfo:file { getattr open read };
+allow fsck preload_block_device:blk_file { ioctl open read write };
+

@@ -1,0 +1,2 @@
+allow isolated_app sysfs_cpuinfo:dir { search };
+allow isolated_app sysfs_cpuinfo:file { getattr };

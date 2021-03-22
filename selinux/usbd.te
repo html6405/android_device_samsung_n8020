@@ -1,2 +1,0 @@
-#allow usbd sysfs_cpuinfo:dir search;
-#allow usbd sysfs_cpuinfo:file { getattr open read };

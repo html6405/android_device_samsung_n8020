@@ -1,5 +1,0 @@
-allow fsck efs_block_device:blk_file getattr;
-allow fsck efs_block_device:blk_file open;
-allow fsck efs_block_device:blk_file { read write };
-allow fsck efs_block_device:blk_file { ioctl };
-allow fsck fsck:capability { dac_override };

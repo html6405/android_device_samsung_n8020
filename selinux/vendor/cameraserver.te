@@ -1,0 +1,7 @@
+allow cameraserver gpu_device:chr_file { ioctl open read write };
+allow cameraserver mnt_user_file:dir search;
+allow cameraserver storage_file:dir search;
+allow cameraserver storage_file:lnk_file read;
+allow cameraserver mnt_user_file:lnk_file read;
+allow cameraserver sysfs_cpuinfo:dir search;
+allow cameraserver sysfs_cpuinfo:file { getattr open read };

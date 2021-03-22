@@ -1,0 +1,23 @@
+type qmuxd, domain;
+type qmuxd_exec, exec_type, file_type;
+net_domain(qmuxd)
+init_daemon_domain(qmuxd)
+
+allow qmuxd socket_device:dir { write add_name remove_name search };
+allow qmuxd socket_device:sock_file { create setattr getattr write unlink };
+allow qmuxd socket_device:dir { write add_name remove_name search };
+allow qmuxd socket_device:sock_file { create setattr getattr write unlink };
+allow qmuxd socket_device:dir { write add_name remove_name search };
+allow qmuxd socket_device:sock_file { create setattr getattr write unlink };
+allow qmuxd socket_device:dir { write add_name remove_name search };
+allow qmuxd socket_device:sock_file { create setattr getattr write unlink };
+allow qmuxd sysfs_wake_lock:file { append open };
+allow qmuxd sysfs:file w_file_perms;
+allow qmuxd radio_device:file w_file_perms;
+allow qmuxd self:capability { setuid setgid setpcap };
+allow qmuxd qmuxd:capability2 { block_suspend };
+allow qmuxd qmuxd:process { execmem };
+allow qmuxd radio_device:chr_file { read write open };
+allow qmuxd sysfs_cpuinfo:dir search;
+allow qmuxd sysfs_cpuinfo:file { open read };
+allow qmuxd sysfs_cpuinfo:file getattr;

@@ -1,3 +1,0 @@
-allow adbd sysfs_cpuinfo:dir search;
-allow adbd sysfs_cpuinfo:file { getattr open read };
-allow adbd self:capability dac_override;

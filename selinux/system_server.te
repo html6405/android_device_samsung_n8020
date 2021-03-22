@@ -1,3 +1,0 @@
-allow system_server socket_device:dir { write add_name };
-allow system_server socket_device:sock_file { write create setattr };
-allow system_server qmuxd:unix_stream_socket { connectto };

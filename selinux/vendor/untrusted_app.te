@@ -1,2 +1,17 @@
 allow untrusted_app sysfs_cpuinfo:dir { search open read };
 allow untrusted_app sysfs_cpuinfo:file r_file_perms;
+allow untrusted_app init:dir search;
+allow untrusted_app init:file getattr;
+allow untrusted_app kernel:dir search;
+#allow untrusted_app kernel:file r_file_perms;
+allow untrusted_app proc_asound:dir search;
+allow untrusted_app proc:file { getattr };
+allow untrusted_app proc_qtaguid_stat:file { getattr open read };
+allow untrusted_app proc_stat:file { getattr  };
+allow untrusted_app proc_zoneinfo:file { getattr open read };
+allow untrusted_app priv_app:dir search;
+allow untrusted_app init:dir { getattr };
+allow untrusted_app kernel:dir { getattr };
+allow untrusted_app kernel:file { getattr };
+allow untrusted_app hal_usb_default:dir { getattr };
+allow untrusted_app hal_usb_default:file { getattr };

@@ -1,2 +1,0 @@
-allow isolated_app sysfs_cpuinfo:dir { open read search };
-allow isolated_app sysfs_cpuinfo:file { getattr open read };

@@ -1,8 +1,0 @@
-#allow sysinit app_data_file:dir { search };
-
-#allow sysinit kickstart:dir { search read };
-#allow sysinit qmuxd:dir { search read };
-
-#allow sysinit kickstart:file { read open };
-#allow sysinit qmuxd:file { read open };
-
