@@ -93,7 +93,6 @@ system/vendor/bin/hw/rild                                        u:object_r:RIL-
 # Executables
 /system/vendor/bin/macloader                                     u:object_r:macloader_exec:s0
 /system/bin/tinyplay                                             u:object_r:tinyplay_exec:s0
-/system/vendor/bin/glgps                                         u:object_r:glgps_exec:s0
 /system/vendor/bin/restart_rild.sh                               u:object_r:radioreset_exec:s0
 /system/vendor/bin/sec_keyboard                                  u:object_r:sec_keyboard_exec:s0
 
