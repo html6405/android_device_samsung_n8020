@@ -70,10 +70,6 @@
 #============= hwservicemanager==============
 #allow hwservicemanager init:binder { call };
 
-#============= gps-daemon==============
-#allow glgps vendor_file:file { entrypoint };
-#allow glgps system_data_file:file { write };
-
 #============= macloader==============
 #allow macloader vendor_file:file entrypoint;
 
