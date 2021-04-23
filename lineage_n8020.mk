@@ -24,10 +24,3 @@ PRODUCT_BRAND := samsung
 PRODUCT_MODEL := GT-N8020
 PRODUCT_MANUFACTURER := samsung
 
-# Set build fingerprint / ID / Product Name ect.
-PRODUCT_BUILD_PROP_OVERRIDES += \
-		PRODUCT_NAME=p4noteltexx \
-		TARGET_DEVICE=p4notelte \
-		PRIVATE_BUILD_DESC="p4noteltexx-user 4.4.2 KOT49H N8020XXSDQA4 release-keys"
-
-BUILD_FINGERPRINT=samsung/p4noteltexx/p4notelte:4.4.2/KOT49H/N8020XXSDQA4:user/release-keys
