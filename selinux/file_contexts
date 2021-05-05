@@ -8,17 +8,6 @@
 /dev/fimg2d                                                      u:object_r:gpu_device:s0
 /sys/class/misc/gpu_clock_control(/.*)?                          u:object_r:gpu_device:s0
 
-# RIL
-/dev/link_pm                                                     u:object_r:radio_device:s0
-/dev/umts_boot0                                                  u:object_r:radio_device:s0
-/dev/umts_boot1                                                  u:object_r:radio_device:s0
-/dev/umts_ipc0                                                   u:object_r:radio_device:s0
-/dev/umts_ramdump0                                               u:object_r:radio_device:s0
-/dev/umts_rfs0                                                   u:object_r:radio_device:s0
-/data/misc/radio(/.*)?                                           u:object_r:radio_data:s0
-/sys/devices/platform/s5p-ehci/ehci_power                        u:object_r:sysfs_radio:s0
-/dev/__cbd_msg_                                                  u:object_r:cbd_device:s0
-
 # Binaries
 /system/vendor/bin/qmuxd                                         u:object_r:qmuxd_exec:s0
 /system/vendor/bin/efsks                                         u:object_r:kickstart_exec:s0
@@ -27,12 +16,6 @@
 /system/vendor/bin/smdexe                                        u:object_r:smdexe_exec:s0
 /system/vendor/bin/qmiproxy                                      u:object_r:qmiproxy_exec:s0
 /vendor/vendor/bin/hw/rild                                       u:object_r:RIL-daemon_exec:s0
-
-# Sockets
-/dev/socket/qmux_audio(/.*)?                                     u:object_r:socket_device:s0
-/dev/socket/qmux_bluetooth(/.*)?                                 u:object_r:socket_device:s0
-/dev/socket/qmux_gps(/.*)?                                       u:object_r:socket_device:s0
-/dev/socket/qmux_radio(/.*)?                                     u:object_r:socket_device:s0
 
 # Block labeling
 /dev/block/mmcblk0(.*)                                           u:object_r:boot_block_device:s0
@@ -45,7 +28,6 @@
 /dev/block/zram0                                                 u:object_r:swap_block_device:s0
 /efs                                                             u:object_r:efs_device_file:s0
 /misc                                                            u:object_r:misc_device_file:s0
-/tombstones                                                      u:object_r:tombstones_device_file:s0
 /preload                                                         u:object_r:preload_device_file:s0
 /firmware                                                        u:object_r:efs_block_device:s0
 
@@ -71,10 +53,6 @@
 /data/.wifiver.info                                              u:object_r:wifi_data_file:s0
 /data/.psm.info                                                  u:object_r:wifi_data_file:s0
 /sys/module/dhd/parameters/firmware_path                         u:object_r:wifi_firmware_path:s0
-
-
-# Firmwares
-/system/vendor/firmware/mfc_fw.bin                               u:object_r:firmware_mfc:s0
 
 # Display
 /sys/devices/platform/s5p-dsim.0(/.*)?			u:object_r:display_vendor_data_file:s0
@@ -129,6 +107,26 @@
 # MMC
 /sys/devices/platform/dw_mmc/mmc_host/mmc[0-9]/mmc[0-9]:[0-9]+/block/mmcblk[0](/.*)?  u:object_r:sysfs_mmc:s0
 /sys/devices/platform/s3c-sdhci.[0-9]/mmc_host/mmc[0-9]:/mmc[0]-9:[0-9]+/block/mmcblk[0-9](/.*)? u:object_r:sysfs_mmc:s0
+
+# RIL
+/dev/mdm                                                         u:object_r:radio_device:s0
+/dev/hsicctl[0-3]*                                               u:object_r:radio_device:s0
+/dev/ttyUSB0                                                     u:object_r:radio_device:s0
+
+# Tombstones
+/tombstones(/.*)?                                                u:object_r:tombstone_data_file:s0
+
+# Sec-ril
+/efs/FactoryApp/keystr                                           u:object_r:efs_file:s0
+/efs/FactoryApp/factorymode                                      u:object_r:efs_file:s0
+/efs/FactoryApp/serial_no                                        u:object_r:efs_file:s0
+/data/misc/radio(/.*)?                                           u:object_r:radio_data_file:s0
+
+# Sockets
+/dev/socket/qmux_audio(/.*)?                                     u:object_r:socket_device:s0
+/dev/socket/qmux_bluetooth(/.*)?                                 u:object_r:socket_device:s0
+/dev/socket/qmux_gps(/.*)?                                       u:object_r:socket_device:s0
+/dev/socket/qmux_radio(/.*)?                                     u:object_r:socket_device:s0
 
 # Wakeup sources
 /sys/kernel/debug/wakeup_sources				u:object_r:debugfs_wakeup_sources:s0
