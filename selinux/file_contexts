@@ -47,6 +47,7 @@
 /misc                                                            u:object_r:misc_device_file:s0
 /tombstones                                                      u:object_r:tombstones_device_file:s0
 /preload                                                         u:object_r:preload_device_file:s0
+/firmware                                                        u:object_r:efs_block_device:s0
 
 # Camera
 /dev/s3c-mfc                                                     u:object_r:mfc_device:s0
