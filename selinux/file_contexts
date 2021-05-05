@@ -13,6 +13,7 @@
 /system/vendor/bin/efsks                                         u:object_r:kickstart_exec:s0
 /system/vendor/bin/ks                                            u:object_r:kickstart_exec:s0
 /system/vendor/bin/qcks                                          u:object_r:kickstart_exec:s0
+/system/vendor/bin/qcks.sh                                       u:object_r:kickstart_exec:s0
 /system/vendor/bin/smdexe                                        u:object_r:smdexe_exec:s0
 /system/vendor/bin/qmiproxy                                      u:object_r:qmiproxy_exec:s0
 /vendor/vendor/bin/hw/rild                                       u:object_r:RIL-daemon_exec:s0
