@@ -47,7 +47,6 @@ on init
     mkdir /dev/pipes 0771 shell shell
 
 # MDM requirement
-    mkdir /data/cp_log
     chmod 0775 /data/cp_log
     chown system radio /data/cp_log
 
@@ -65,17 +64,8 @@ on init
     chown system radio /dev/block/modem/dump_path
     chmod 0775 /dev/block/modem/dump_path
 
-    mkdir /firmware 0771 system system
     chown system system /tombstones
     chmod 0775 /tombstones
-    mkdir /tombstones/modem 0775 system system
-    mkdir /tombstones/lpass 0775 system system
-    mkdir /tombstones/wcnss 0775 system system
-    mkdir /tombstones/dsps 0775 system system
-    rmdir /tombstones/qcks
-    mkdir /tombstones/qcks 771 system system
-    rmdir /tombstones/efs
-    mkdir /tombstones/efs 771 system system
 
 #########################################################################################################################
 on post-fs-data
@@ -213,7 +203,7 @@ on property:sys.boot_completed=1
     # increase read-ahead value to 256 kb
     write /sys/block/mmcblk0/queue/read_ahead_kb 256
 
-service qc_kickstart /system/vendor/bin/qcks s
+service qc_kickstart /system/vendor/bin/qcks.sh
     class core
     user root
     group radio cache inet misc audio sdcard_rw log
