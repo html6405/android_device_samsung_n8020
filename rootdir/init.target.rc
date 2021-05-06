@@ -64,8 +64,7 @@ on init
     chown system radio /dev/block/modem/dump_path
     chmod 0775 /dev/block/modem/dump_path
 
-    chown system system /tombstones
-    chmod 0775 /tombstones
+
 
 #########################################################################################################################
 on post-fs-data
@@ -125,8 +124,6 @@ on post-fs-data
 
 # Restorecon
     restorecon_recursive /efs
-    restorecon_recursive /tombstones
-    restorecon /tombstones/qcks/temp.dump
     write /data/.cid.info 0
     restorecon /data/.cid.info
     restorecon /data/ISP_CV
