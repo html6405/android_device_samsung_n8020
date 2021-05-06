@@ -3,7 +3,5 @@ allow cameraserver mnt_user_file:dir search;
 allow cameraserver mnt_user_file:lnk_file { open read };
 allow cameraserver storage_file:dir search;
 allow cameraserver storage_file:lnk_file read;
-allow cameraserver firmware_exynos:dir search;
-allow cameraserver firmware_exynos:file { open read };
 allow cameraserver media_rw_data_file:dir search;
 allow cameraserver sdcardfs:dir search;
