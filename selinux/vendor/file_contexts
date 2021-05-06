@@ -82,8 +82,8 @@
 /data/cfw(/.*)?							 u:object_r:firmware_exynos:s0
 
 # Vendor
-/(vendor|system/vendor)/lib/hw/gralloc.exynos4.so							u:object_r:system_file:s0
-/(vendor|system/vendor)/lib/hw/hwcomposer.exynos4.so							u:object_r:system_file:s0
+/(vendor|system/vendor)/lib/hw/gralloc.exynos4.so							                u:object_r:system_file:s0
+/(vendor|system/vendor)/lib/hw/hwcomposer.exynos4.so							            u:object_r:system_file:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.power@1\.0-service\.exynos4412			u:object_r:hal_power_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.gnss@[0-9]\.[0-9]-service\.exynos4		u:object_r:hal_gnss_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.light@[0-9]\.[0-9]-service\.samsung 		u:object_r:hal_light_default_exec:s0
