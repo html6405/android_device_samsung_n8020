@@ -78,7 +78,7 @@
 
 # Firmware
 /system/vendor/firmware(/.*)?					 u:object_r:firmware_exynos:s0
-/system/vendor/firwmare/mfc_fw.bin				 u:object_r:firmware_mfc:s0
+/system/vendor/firmware/mfc_fw.bin				 u:object_r:firmware_mfc:s0
 /data/cfw(/.*)?							 u:object_r:firmware_exynos:s0
 
 # Vendor
