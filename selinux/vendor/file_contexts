@@ -1,6 +1,5 @@
 # Dock
 /dev/ttySAC3                                                     u:object_r:dock_device:s0
-/system/vendor/bin/sec_keyboard                                  u:object_r:sec_keyboard_exec:s0
 
 # GFX
 /dev/mali                                                        u:object_r:gpu_device:s0
@@ -64,6 +63,7 @@
 /system/vendor/bin/macloader                                     u:object_r:macloader_exec:s0
 /system/bin/tinyplay                                             u:object_r:tinyplay_exec:s0
 /system/bin/restart_rild.sh                                      u:object_r:radioreset_exec:s0
+/system/vendor/bin/sec_keyboard                                  u:object_r:sec_keyboard_exec:s0
 
 /dev/exynos-mem							 u:object_r:video_device:s0
 /data/ISP_CV							 u:object_r:camera_data_file:s0
