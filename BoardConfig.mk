@@ -35,10 +35,16 @@ TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
     /system/vendor/bin/qcks=19
 
 TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
+    /vendor/bin/ks=19
+
+TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
     /system/vendor/bin/qmiproxy=19
 
 TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
     /system/vendor/bin/qmuxd=19
+
+TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
+    /vendor/lib/libcsd-client.so=19
 
 # Kernel
 TARGET_KERNEL_CONFIG := lineageos_i925_defconfig
