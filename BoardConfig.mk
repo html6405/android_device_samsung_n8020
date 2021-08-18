@@ -69,6 +69,3 @@ BOARD_PLAT_PRIVATE_SEPOLICY_DIR += device/samsung/n8020/selinux/private
 
 # assert
 TARGET_OTA_ASSERT_DEVICE := m0,p4notelte,n8020,GT-N8020,SCH-I925,i925,p4noteltevzw
-
-# inherit from the proprietary version
--include vendor/samsung/p4notelte/p4notelte-vendor-blobs.mk
