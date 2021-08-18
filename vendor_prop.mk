@@ -15,7 +15,7 @@
 #
 
 #
-# system.prop for n8000
+# system.prop for n8020
 #
 PRODUCT_PROPERTY_OVERRIDES += \
 	config.disable_atlas=true \
