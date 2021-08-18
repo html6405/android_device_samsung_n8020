@@ -1,0 +1,2 @@
+allow system_suspend kickstart:binder transfer;
+allow system_suspend sysfs_wake_lock:file { open read write };

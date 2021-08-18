@@ -7,3 +7,4 @@ type gps_device, dev_type;
 #type hal_allocator_default, domain;
 #type storaged, domain;
 type dock_device, dev_type;
+type efs_boot_dev, dev_type;

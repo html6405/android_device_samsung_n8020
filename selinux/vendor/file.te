@@ -17,3 +17,4 @@ type sysfs_boeffla, fs_type, sysfs_type;
 type sysfs_sec_touchkey, fs_type, sysfs_type;
 type sysfs_sec_led, fs_type, sysfs_type;
 type gralloc_file, file_type, vendor_file_type;
+type sysfs_rmnet, fs_type, sysfs_type;

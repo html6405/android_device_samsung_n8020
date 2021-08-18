@@ -26,3 +26,5 @@ allow system_server debugfs:file { getattr open read };
 allow system_server init:unix_stream_socket getopt;
 allow system_server radioreset:fd use;
 allow system_server radioreset:fifo_file write;
+allow system_server userspace_reboot_config_prop:file { getattr open read };
+allow system_server userspace_reboot_exported_prop:file { getattr open };

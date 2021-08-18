@@ -1,0 +1,3 @@
+# kickstart processes and scripts
+type kickstart, domain;
+type kickstart_exec, exec_type, file_type;

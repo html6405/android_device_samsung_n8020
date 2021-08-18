@@ -36,4 +36,15 @@ allow init sysfs_sec_touchkey:file setattr;
 allow init sysfs_sec_led:file setattr;
 allow init { domain -lmkd -crash_dump }:process noatsecure;
 
+allow init block_device:lnk_file setattr;
+allow init efs_block_device:blk_file relabelto;
+allow init hal_authsecret_hwservice:hwservice_manager { add find };
+allow init hal_gatekeeper_hwservice:hwservice_manager { add find };
+allow init hal_ir_hwservice:hwservice_manager { add find };
+allow init hidl_base_hwservice:hwservice_manager add;
+allow init proc:file setattr;
+allow init sysfs_cpuinfo:file { open setattr write };
+allow init sysfs_usb:file { setattr write };
+allow init system_file:file execute_no_trans;
+
 domain_auto_trans(init, rootfs, cpboot-daemon, macloader, tinyplay)

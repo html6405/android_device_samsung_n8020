@@ -1,0 +1,2 @@
+allow kickstart system_suspend:binder call;
+allow kickstart system_suspend_hwservice:hwservice_manager find;
