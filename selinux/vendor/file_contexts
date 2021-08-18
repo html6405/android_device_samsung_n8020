@@ -8,13 +8,13 @@
 /sys/class/misc/gpu_clock_control(/.*)?                          u:object_r:gpu_device:s0
 
 # Binaries
-/system/vendor/bin/qmuxd                                         u:object_r:qmuxd_exec:s0
-/system/vendor/bin/efsks                                         u:object_r:kickstart_exec:s0
-/system/vendor/bin/ks                                            u:object_r:kickstart_exec:s0
-/system/vendor/bin/qcks                                          u:object_r:kickstart_exec:s0
-/system/vendor/bin/qcks.sh                                       u:object_r:kickstart_exec:s0
-/system/vendor/bin/smdexe                                        u:object_r:smdexe_exec:s0
-/system/vendor/bin/qmiproxy                                      u:object_r:qmiproxy_exec:s0
+/vendor/bin/qmuxd                                         u:object_r:qmuxd_exec:s0
+/vendor/bin/efsks                                         u:object_r:kickstart_exec:s0
+/vendor/bin/ks                                            u:object_r:kickstart_exec:s0
+/vendor/bin/qcks                                          u:object_r:kickstart_exec:s0
+/vendor/bin/qcks.sh                                       u:object_r:kickstart_exec:s0
+/vendor/bin/smdexe                                        u:object_r:smdexe_exec:s0
+/vendor/bin/qmiproxy                                      u:object_r:qmiproxy_exec:s0
 /vendor/vendor/bin/hw/rild                                       u:object_r:RIL-daemon_exec:s0
 
 # Block labeling
@@ -68,17 +68,17 @@
 /sys/devices/platform/samsung-pd.2/s3cfb.0(/.*)?		u:object_r:sysfs_display:s0
 
 # Executables
-/system/vendor/bin/macloader                                     u:object_r:macloader_exec:s0
+/vendor/bin/macloader                                     u:object_r:macloader_exec:s0
 /system/bin/tinyplay                                             u:object_r:tinyplay_exec:s0
 /system/bin/restart_rild.sh                                      u:object_r:radioreset_exec:s0
-/system/vendor/bin/sec_keyboard                                  u:object_r:sec_keyboard_exec:s0
+/vendor/bin/sec_keyboard                                  u:object_r:sec_keyboard_exec:s0
 
 /dev/exynos-mem							 u:object_r:video_device:s0
 /data/ISP_CV							 u:object_r:camera_data_file:s0
 
 # Firmware
-/system/vendor/firmware(/.*)?					 u:object_r:firmware_exynos:s0
-/system/vendor/firmware/mfc_fw.bin				 u:object_r:firmware_mfc:s0
+/vendor/firmware(/.*)?					 u:object_r:firmware_exynos:s0
+/vendor/firmware/mfc_fw.bin				 u:object_r:firmware_mfc:s0
 /data/cfw(/.*)?							 u:object_r:firmware_exynos:s0
 
 # Vendor

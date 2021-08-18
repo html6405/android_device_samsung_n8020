@@ -200,21 +200,21 @@ on property:sys.boot_completed=1
     # increase read-ahead value to 256 kb
     write /sys/block/mmcblk0/queue/read_ahead_kb 256
 
-service qc_kickstart /system/vendor/bin/qcks.sh
+service qc_kickstart /vendor/bin/qcks.sh
     class core
     user root
     group radio cache inet misc audio sdcard_rw log
     oneshot
     seclabel u:r:kickstart:s0
 
-service qmuxd /system/vendor/bin/qmuxd
+service qmuxd /vendor/bin/qmuxd
     class main
     user system
     group radio log audio bluetooth gps log
     seclabel u:r:qmuxd:s0
 
 # serial keyboard daemon
-service sec_keyboard /system/vendor/bin/sec_keyboard /dev/ttySAC3
+service sec_keyboard /vendor/bin/sec_keyboard /dev/ttySAC3
 	class core
 	group system
 	seclabel u:r:sec_keyboard:s0

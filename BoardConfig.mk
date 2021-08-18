@@ -29,19 +29,19 @@ BOARD_PROVIDES_LIBRIL := true
 BOARD_MODEM_TYPE := mdm9x35
 
 TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
-    /system/vendor/bin/smdexe=19
+    /vendor/bin/smdexe=19
 
 TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
-    /system/vendor/bin/qcks=19
+    /vendor/bin/qcks=19
 
 TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
     /vendor/bin/ks=19
 
 TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
-    /system/vendor/bin/qmiproxy=19
+    /vendor/bin/qmiproxy=19
 
 TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
-    /system/vendor/bin/qmuxd=19
+    /vendor/bin/qmuxd=19
 
 TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
     /vendor/lib/libcsd-client.so=19

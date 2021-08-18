@@ -18,7 +18,7 @@
  * limitations under the License.
  */
 
-#define CONFIG_FILE "/system/etc/sound/n80xx"
+#define CONFIG_FILE "/vendor/etc/sound/n80xx"
 
 /* ALSA cards for WM1811 */
 #define CARD_DEFAULT  0
