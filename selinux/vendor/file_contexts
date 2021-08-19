@@ -16,6 +16,7 @@
 /vendor/bin/smdexe                                        u:object_r:smdexe_exec:s0
 /vendor/bin/qmiproxy                                      u:object_r:qmiproxy_exec:s0
 /vendor/vendor/bin/hw/rild                                       u:object_r:RIL-daemon_exec:s0
+/vendor/bin/restart_rild.sh                               u:object_r:radioreset_exec:s0
 
 # Block labeling
 /dev/block/mmcblk0(.*)                                           u:object_r:boot_block_device:s0
