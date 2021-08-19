@@ -118,6 +118,7 @@
 /sys/devices/platform/s5p-ehci/ehci_power                        u:object_r:sysfs_radio:s0
 /dev/mdm                                                         u:object_r:radio_device:s0
 /dev/hsicctl[0-3]*                                               u:object_r:radio_device:s0
+/sys/devices/virtual/hsicctl(/.*)?		                         u:object_r:radio_device:s0
 /dev/ttyUSB0                                                     u:object_r:radio_device:s0
 
 # Tombstones
