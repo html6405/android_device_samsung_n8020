@@ -15,7 +15,7 @@
 /vendor/bin/qcks.sh                                       u:object_r:kickstart_exec:s0
 /vendor/bin/smdexe                                        u:object_r:smdexe_exec:s0
 /vendor/bin/qmiproxy                                      u:object_r:qmiproxy_exec:s0
-/vendor/vendor/bin/hw/rild                                       u:object_r:RIL-daemon_exec:s0
+/vendor/bin/hw/rild                                       u:object_r:RIL-daemon_exec:s0
 /vendor/bin/restart_rild.sh                               u:object_r:radioreset_exec:s0
 
 # Block labeling
@@ -38,7 +38,6 @@
 /efs                                                             u:object_r:efs_device_file:s0
 /misc                                                            u:object_r:misc_device_file:s0
 /preload                                                         u:object_r:preload_device_file:s0
-/firmware                                                        u:object_r:efs_block_device:s0
 # Camera
 /dev/s3c-mfc                                                     u:object_r:mfc_device:s0
 /dev/s5p-jpeg                                                    u:object_r:video_device:s0
@@ -124,6 +123,10 @@
 /dev/hsicctl[0-3]*                                               u:object_r:radio_device:s0
 /sys/devices/virtual/hsicctl(/.*)?		                         u:object_r:radio_device:s0
 /dev/ttyUSB0                                                     u:object_r:radio_device:s0
+
+# RIL Firmware
+/firmware                                                        u:object_r:system_data_file:s0
+/firmware(/.*)?                                                  u:object_r:tombstone_data_file:s0
 
 # Tombstones
 /tombstones                                                      u:object_r:system_data_file:s0
