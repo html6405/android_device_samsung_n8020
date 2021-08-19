@@ -122,6 +122,7 @@
 /dev/mdm                                                         u:object_r:radio_device:s0
 /dev/hsicctl[0-3]*                                               u:object_r:radio_device:s0
 /sys/devices/virtual/hsicctl(/.*)?		                         u:object_r:radio_device:s0
+/dev/block/modem(/.*)?				                             u:object_r:radio_device:s0
 /dev/ttyUSB0                                                     u:object_r:radio_device:s0
 
 # RIL Firmware
