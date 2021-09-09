@@ -1,0 +1,2 @@
+allow bluetooth firmware_exynos:dir rw_dir_perms;
+allow bluetooth firmware_exynos:file r_file_perms;
