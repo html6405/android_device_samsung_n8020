@@ -5,4 +5,6 @@ permissive param;
 init_daemon_domain(param);
 
 allow param sysfs_cpuinfo:dir search;
+allow param sysfs_cpuinfo:file read;
 allow param toolbox_exec:file { execute execute_no_trans getattr open read };
+allow param shell_exec:file { getattr read };
