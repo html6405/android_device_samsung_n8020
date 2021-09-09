@@ -26,6 +26,9 @@ LOCAL_PATH := device/samsung/n8020
 BOARD_PROVIDES_LIBRIL := true
 BOARD_MODEM_TYPE := mdm9x35
 
+# Bluetooth
+BOARD_CUSTOM_BT_CONFIG := $(LOCAL_PATH)/bluetooth/vnd_n8020.txt
+
 # Kernel
 TARGET_KERNEL_CONFIG := lineageos_i925_defconfig
 
