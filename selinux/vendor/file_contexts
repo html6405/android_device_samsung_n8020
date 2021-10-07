@@ -140,6 +140,8 @@
 /efs/FactoryApp/factorymode                                      u:object_r:efs_file:s0
 /efs/FactoryApp/serial_no                                        u:object_r:efs_file:s0
 /data/misc/radio(/.*)?                                           u:object_r:radio_data_file:s0
+/data/data/com.android.providers.telephony/databases(/.*)?       u:object_r:radio_data_file:s0
+/data/data/com.android.providers.telephony/shared_prefs(/.*)?    u:object_r:radio_data_file:s0
 
 # Sockets
 /dev/socket/qmux_audio(/.*)?                                     u:object_r:socket_device:s0
