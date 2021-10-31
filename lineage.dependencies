@@ -1,7 +1,7 @@
 [
     {
         "repository": "android_device_samsung_smdk4412-common",
-        "target_path": "device/samsung/common"
+        "target_path": "device/samsung/smdk4412-common"
     },
     {
         "repository": "android_device_samsung_smdk4412-qcom-common",
