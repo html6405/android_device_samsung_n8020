@@ -46,8 +46,8 @@ RECOVERY_FSTAB_VERSION := 2
 
 # Selinux
 BOARD_SEPOLICY_DIRS += device/samsung/n8020/selinux/vendor
-BOARD_PLAT_PUBLIC_SEPOLICY_DIR += device/samsung/n8020/selinux/public
-BOARD_PLAT_PRIVATE_SEPOLICY_DIR += device/samsung/n8020/selinux/private
+SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += device/samsung/n8020/selinux/public
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += device/samsung/n8020/selinux/private
 
 # assert
 TARGET_OTA_ASSERT_DEVICE := m0,p4notelte,n8020,GT-N8020,SCH-I925,i925,p4noteltevzw
