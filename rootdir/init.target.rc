@@ -214,7 +214,7 @@ service vendor.qc_kickstart /vendor/bin/qcks s
 service vendor.qmuxd /vendor/bin/qmuxd
     class main
     user system
-    group radio log audio bluetooth gps log
+    group radio log audio bluetooth gps log wakelock
     seclabel u:r:qmuxd:s0
 
 # serial keyboard daemon
