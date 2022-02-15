@@ -25,12 +25,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.telephony.default_network=9 \
 	telephony.lteOnGsmDevice=1 \
     telephony.lteOnCdmaDevice=0 \
-    ro.ril.telephony.mqanelements=6 \
     ro.hdcp2.rx=tz \
     ro.com.android.dataroaming=false \
 	ro.sf.lcd_density=160 \
-	ro.lcd_min_brightness=20 \
-	ro.ril.telephony.nstrings=4
+	ro.lcd_min_brightness=20
 
 # EGL blobs crash on screen off
 PRODUCT_PROPERTY_OVERRIDES += \
