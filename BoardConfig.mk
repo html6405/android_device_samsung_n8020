@@ -20,6 +20,8 @@
 -include device/samsung/n80xx-common/BoardConfigCommon.mk
 -include device/samsung/smdk4412-qcom-common/BoardCommonConfig.mk
 
+TARGET_SPECIFIC_HEADER_PATH += device/samsung/n8020/include
+
 LOCAL_PATH := device/samsung/n8020
 
 # RIL
