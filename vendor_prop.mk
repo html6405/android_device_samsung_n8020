@@ -18,7 +18,6 @@
 # system.prop for n8020
 #
 PRODUCT_PROPERTY_OVERRIDES += \
-	config.disable_atlas=true \
 	dalvik.vm.dexopt-data-only=1 \
 	dalvik.vm.dex2oat-Xmx=256m \
 	vendor.rild.libpath=/vendor/lib/libsec-ril.so \
