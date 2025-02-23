@@ -7,6 +7,8 @@ init_daemon_domain(sec_keyboard)
 allow sec_keyboard self:capability { sys_admin };
 allow sec_keyboard input_device:file { read entrypoint getattr};
 allow sec_keyboard dock_device:chr_file { open read write ioctl };
+allow sec_keyboard sysfs_cpuinfo:dir r_dir_perms;
+allow sec_keyboard sysfs_cpuinfo:file { read open getattr };
 allow sec_keyboard vendor_file:file { entrypoint };
 
 type ttySAC3, domain;

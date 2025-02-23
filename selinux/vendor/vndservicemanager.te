@@ -1,0 +1,2 @@
+allow vndservicemanager sysfs_cpuinfo:dir r_dir_perms;
+allow vndservicemanager sysfs_cpuinfo:file { getattr open read };

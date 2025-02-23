@@ -1,4 +1,4 @@
-allow hwservicemanager init:dir search;
-allow hwservicemanager init:file { open read };
+allow hwservicemanager init:dir r_dir_perms;
+allow hwservicemanager init:file r_file_perms;
 allow hwservicemanager init:process getattr;
 allow hwservicemanager kickstart:binder transfer;

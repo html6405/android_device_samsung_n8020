@@ -1,1 +1,4 @@
-allow gmscore_app sysfs_cpuinfo:file { getattr open read };
+allow gmscore_app sysfs_cpuinfo:file r_file_perms;
+allow gmscore_app vendor_file:file r_file_perms;
+allow gmscore_app ion_device:chr_file rw_file_perms;
+allow gmscore_app vendor_file:file rx_file_perms;

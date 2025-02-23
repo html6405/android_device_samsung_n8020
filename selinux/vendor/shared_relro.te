@@ -1,2 +1,2 @@
-allow shared_relro sysfs_cpuinfo:dir search;
+allow shared_relro sysfs_cpuinfo:dir r_dir_perms;
 allow shared_relro sysfs_cpuinfo:file { getattr open read };

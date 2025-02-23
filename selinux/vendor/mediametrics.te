@@ -1,0 +1,2 @@
+allow mediametrics sysfs_cpuinfo:dir r_dir_perms;
+allow mediametrics sysfs_cpuinfo:file r_file_perms;

@@ -1,2 +1,4 @@
 allow audioserver system_file:file execmod;
 allow audioserver rild:unix_stream_socket connectto;
+allow audioserver vendor_default_prop:file r_file_perms;
+allow audioserver vendor_file:file r_file_perms;

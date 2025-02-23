@@ -1,0 +1,28 @@
+allow vendor_init anr_data_file:dir setattr;
+allow vendor_init camera_data_file:file { getattr open setattr write };
+allow vendor_init device:file { create write };
+allow vendor_init dhcp_data_file:dir { getattr setattr };
+allow vendor_init proc:file write;
+allow vendor_init radio_core_data_file:dir { getattr setattr };
+allow vendor_init sysfs:lnk_file setattr;
+allow vendor_init system_data_file:dir create_dir_perms;
+allow vendor_init system_data_file:file create;
+allow vendor_init system_data_file:file create_file_perms;
+allow vendor_init wifi_data_file:dir { create getattr setattr };
+allow vendor_init wifi_data_file:file { create getattr open setattr write relabelto };
+allow vendor_init wpa_socket:dir getattr;
+allow init hal_wifi_default:unix_dgram_socket getattr;
+allow init hal_wifi_supplicant_service:service_manager add;
+allow init rfkill_device:chr_file r_file_perms;
+allow init self:netlink_generic_socket { getattr write };
+allow init self:netlink_route_socket { bind create nlmsg_write read write };
+allow init self:packet_socket { bind create ioctl setopt };
+allow vendor_init apk_data_file:dir search;
+allow vendor_init wifi_data_file:dir search;
+allow vendor_init bluetooth_data_file:file { r_file_perms relabelto };
+allow vendor_init camera_data_file:file create_file_perms;
+allow vendor_init system_data_root_file:file rw_file_perms;
+allow vendor_init radio_data_file:dir rw_dir_perms;
+allow vendor_init radio_data_file:lnk_file create;
+get_prop(vendor_init, default_prop)
+set_prop(vendor_init, default_prop)

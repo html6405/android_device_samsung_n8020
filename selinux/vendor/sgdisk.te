@@ -1,0 +1,2 @@
+allow sgdisk sysfs_cpuinfo:dir r_dir_perms;
+allow sgdisk sysfs_cpuinfo:file { getattr open read };

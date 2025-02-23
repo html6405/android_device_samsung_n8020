@@ -1,4 +1,8 @@
-allow untrusted_app_25 ion_device:chr_file write;
-allow untrusted_app_25 sysfs_boeffla:file { getattr open read write };
-allow untrusted_app_25 sysfs_boeffla:dir search;
+allow untrusted_app_25 ion_device:chr_file rw_file_perms;
+allow untrusted_app_25 sysfs_boeffla:file rw_file_perms;
+allow untrusted_app_25 sysfs_boeffla:dir r_dir_perms;
 allow untrusted_app_25 proc_stat:file r_file_perms;
+allow untrusted_app_25 sysfs_cpuinfo:dir r_dir_perms;
+allow untrusted_app_25 sysfs_cpuinfo:file r_file_perms;
+allow untrusted_app_25 vendor_file:file rx_file_perms;
+allow untrusted_app_25 selinuxfs:file read;

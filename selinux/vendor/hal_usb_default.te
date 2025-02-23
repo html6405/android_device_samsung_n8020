@@ -1,0 +1,2 @@
+allow hal_usb_default sysfs_cpuinfo:dir r_dir_perms;
+allow hal_usb_default sysfs_cpuinfo:file r_file_perms;

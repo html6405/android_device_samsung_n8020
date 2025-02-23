@@ -1,0 +1,2 @@
+allow usbd sysfs_cpuinfo:dir r_dir_perms;
+allow usbd sysfs_cpuinfo:file { getattr open read };

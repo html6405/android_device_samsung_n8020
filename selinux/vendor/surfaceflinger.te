@@ -1,5 +1,7 @@
-allow surfaceflinger ion_device:chr_file write;
+allow surfaceflinger ion_device:chr_file rw_file_perms;
 allow surfaceflinger sysfs_display:dir search;
 allow surfaceflinger sysfs_display:file { open read };
 #allow surfaceflinger unlabeled:file { execute getattr open read };
 allow surfaceflinger zygote:fd use;
+allow surfaceflinger vendor_default_prop:file { getattr open };
+allow surfaceflinger vendor_file:file { execute getattr open read };

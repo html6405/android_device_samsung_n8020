@@ -1,0 +1,2 @@
+allow gmscore_app system_adbd_prop:file r_file_perms;
+allow gmscore_app adb_data_file:file { getattr read };

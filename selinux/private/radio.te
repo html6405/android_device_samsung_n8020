@@ -1,0 +1,2 @@
+allow radio sysfs_cpuinfo:dir r_dir_perms;
+allow radio sysfs_cpuinfo:file r_file_perms;

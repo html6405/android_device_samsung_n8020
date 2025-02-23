@@ -1,0 +1,4 @@
+allow artd vendor_app_file:dir rw_dir_perms;
+allow artd vendor_overlay_file:dir rw_dir_perms;
+allow artd vendor_app_file:dir create_dir_perms;
+allow artd vendor_app_file:file create_file_perms;

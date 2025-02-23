@@ -1,1 +1,14 @@
-allow init firmware_exynos:dir { read open };
+allow init firmware_exynos:dir r_dir_perms;
+allow init blkid_exec:file r_file_perms;
+allow init incident_exec:file r_file_perms;
+allow init incident_helper_exec:file r_file_perms;
+allow init migrate_legacy_obb_data_exec:file r_file_perms;
+allow init system_font_fallback_file:file r_file_perms;
+allow init hal_allocator_default:fd use;
+allow init hal_wifi_hwservice:hwservice_manager { add find };
+allow init hidl_memory_hwservice:hwservice_manager find;
+allow init dnsproxyd_socket:sock_file r_file_perms;
+allow init hci_attach_dev:chr_file r_file_perms;
+allow init self:process execmem;
+allow init sysfs_cpuinfo:file rw_file_perms;
+allow init hal_graphics_allocator_hwservice:hwservice_manager find;

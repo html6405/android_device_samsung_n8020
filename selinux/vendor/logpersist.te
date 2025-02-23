@@ -1,3 +1,7 @@
 allow logpersist devpts:chr_file { read write };
 allow logpersist media_rw_data_file:file write;
-allow logpersist sdcardfs:file write;
+allow logpersist sdcardfs:file rw_file_perms;
+allow logpersist efs_file:file r_file_perms;
+allow logpersist init:fifo_file { read write };
+allow logpersist system_data_file:dir { r_dir_perms add_name write };
+allow logpersist system_data_file:file { append create getattr open };

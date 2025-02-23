@@ -1,0 +1,2 @@
+allow logd sysfs_cpuinfo:dir r_dir_perms;
+allow logd sysfs_cpuinfo:file r_file_perms;

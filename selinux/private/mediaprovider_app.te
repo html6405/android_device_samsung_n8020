@@ -1,2 +1,3 @@
-allow mediaprovider_app sysfs_cpuinfo:dir search;
-allow mediaprovider_app sysfs_cpuinfo:file read;
+allow mediaprovider_app sysfs_cpuinfo:dir r_dir_perms;
+allow mediaprovider_app sysfs_cpuinfo:file r_file_perms;
+allow mediaprovider_app vendor_file:file r_file_perms;

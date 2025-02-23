@@ -1,0 +1,2 @@
+allow blkid_untrusted sysfs_cpuinfo:dir r_dir_perms;
+allow blkid_untrusted sysfs_cpuinfo:file r_file_perms;

@@ -1,0 +1,6 @@
+allow webview_zygote sysfs_cpuinfo:dir r_dir_perms;
+allow webview_zygote sysfs_cpuinfo:file { getattr open read };
+allow webview_zygote zygote:unix_dgram_socket { write };
+allow webview_zygote adb_data_file:file r_file_perms;
+allow webview_zygote tombstoned_crash_socket:sock_file r_file_perms;
+allow webview_zygote zygote_exec:file r_file_perms;

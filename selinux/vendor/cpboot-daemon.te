@@ -1,8 +1,12 @@
 type cpboot-daemon, domain;
 type cpboot-daemon_exec, exec_type, file_type;
 
-permissive cpboot-daemon;
 init_daemon_domain(cpboot-daemon);
+
+permissive cpboot-daemon;
+
+allow cpboot-daemon device:chr_file { read write };
+allow cpboot-daemon device:chr_file ioctl;
 
 allow cpboot-daemon cgroup:dir { create add_name };
 allow cpboot-daemon cgroup:file read;
@@ -22,5 +26,4 @@ allow cpboot-daemon usbfs:dir search;
 
 allow cpboot-daemon cache_block_device:blk_file { open read };
 allow cpboot-daemon sysfs:file { open read write };
-allow cpboot-daemon device:chr_file { create unlink };
 allow cpboot-daemon self:capability { dac_override };

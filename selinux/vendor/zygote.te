@@ -1,7 +1,11 @@
 allow zygote init:unix_stream_socket { getattr read write };
 allow zygote exported_camera_prop:file read;
 allow zygote proc_cmdline:file read;
-allow zygote sysfs_cpuinfo:dir { open read search };
+allow zygote sysfs_cpuinfo:dir r_dir_perms;
 allow zygote exported_camera_prop:file { getattr open };
 allow zygote proc_cmdline:file { getattr open };
 allow zygote sysfs_cpuinfo:file { getattr open read };
+allow zygote adb_data_file:file { getattr open read };
+allow zygote properties_serial:file write;
+allow zygote vendor_file:file { execute getattr open read };
+allow zygote vendor_default_prop:file r_file_perms;

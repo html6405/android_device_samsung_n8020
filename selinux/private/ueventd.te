@@ -1,2 +1,5 @@
-allow ueventd firmware_exynos:dir search;
-allow ueventd firmware_exynos:file { read getattr open };
+allow ueventd firmware_exynos:dir r_dir_perms;
+allow ueventd firmware_exynos:file r_file_perms;
+allow ueventd radio_device:dir relabelto;
+allow ueventd radio_device:file relabelto;
+allow ueventd radio_device:lnk_file relabelto;

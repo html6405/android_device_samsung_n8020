@@ -1,2 +1,4 @@
-allow secure_element sysfs_cpuinfo:dir search;
+allow secure_element sysfs_cpuinfo:dir r_dir_perms;
 allow secure_element sysfs_cpuinfo:file { getattr open read };
+allow secure_element system_data_file:dir { add_name create remove_name };
+allow secure_element system_data_file:file { create rename write };

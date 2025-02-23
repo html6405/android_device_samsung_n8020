@@ -1,4 +1,5 @@
 type tweaks, domain;
 type tweaks_exec, exec_type, file_type;
 
-permissive tweaks;
+init_daemon_domain(tweaks);
+

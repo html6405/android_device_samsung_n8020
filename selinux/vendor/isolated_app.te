@@ -1,0 +1,4 @@
+allow isolated_app sysfs_cpuinfo:dir r_dir_perms;
+allow isolated_app sysfs_cpuinfo:file r_file_perms;
+allow isolated_app app_data_file:dir r_dir_perms;
+allow isolated_app content_capture_service:service_manager find;

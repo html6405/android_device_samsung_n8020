@@ -1,3 +1,10 @@
 #allow shell kernel:system syslog_read;
 allow shell su:process signal;
 allow shell kmsg_device:chr_file { open read };
+allow shell sysfs_cpuinfo:dir r_dir_perms;
+allow shell sysfs_cpuinfo:file r_file_perms;
+allow shell aac_drc_prop:file { getattr open };
+allow shell ab_update_gki_prop:file { getattr open };
+allow shell adaptive_haptics_prop:file open;
+allow shell kernel:system syslog_read;
+allow shell wifi_prop:file r_file_perms;
