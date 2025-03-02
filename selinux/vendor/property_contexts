@@ -49,3 +49,4 @@ ro.ril.telephony.qan_resp_strings                                u:object_r:vend
 ro.telephony.default_network                                     u:object_r:vendor_default_prop:s0
 ro.hdcp2.rx                                                      u:object_r:vendor_default_prop:s0
 ro.com.android.dataroaming                                       u:object_r:vendor_default_prop:s0
+vendor.wifikiller                                                u:object_r:vendor_default_prop:s0

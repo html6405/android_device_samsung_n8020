@@ -137,6 +137,8 @@ allow init netd:unix_stream_socket connectto;
 allow init port:udp_socket create_stream_socket_perms;
 allow init hal_wifi_supplicant_default:unix_dgram_socket getattr;
 allow init hal_wifi_supplicant_default_exec:file execute_no_trans;
+allow init wifi_killer_enabler_exec:file execute_no_trans;
+allow init wifi_service:service_manager find;
 allow init wifi_firmware_path:file rw_file_perms;
 allow init fwmarkd_socket:sock_file rw_file_perms;
 allow init gpu_device:chr_file rw_file_perms;
