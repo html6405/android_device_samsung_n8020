@@ -34,7 +34,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 DEVICE_MANIFEST_FILE := $(LOCAL_PATH)/manifest.xml
 
 # Include device blobs first
-$(call inherit-product, vendor/samsung/n8020/n8020-vendor.mk)
+$(call inherit-product, device/samsung/n8020/vendor_compat.mk)
 
 # Vendor properties
 -include $(LOCAL_PATH)/vendor_prop.mk
